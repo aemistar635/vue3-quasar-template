@@ -17,8 +17,8 @@
   </q-header>
 </template>
 <script setup>
-import {defineEmits} from "vue"
-const emits  = defineEmits(['sideBar'])
+import { defineEmits } from "vue";
+const emits = defineEmits(["sideBar"]);
 // import {ref} from "vue";
 
 // let leftDrawerOpen = ref(false)
