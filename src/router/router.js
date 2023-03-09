@@ -6,11 +6,34 @@ export const routes = [
       import(/* webpackChunkName: "not-found" */ "@/views/NotFound.vue"),
   },
   {
-    path: "/login",
-    name: "Login",
+    path: "/",
+    name: "AuthLayout",
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
+      import(
+        /* webpackChunkName: "login" */ "@/components/layout/LoginLayout.vue"
+      ),
+    children: [
+      {
+        path: "/login",
+        name: "Login",
+        component: () =>
+          import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
+        meta: {
+          requiresAuth: false,
+        },
+      },
+      {
+        path: "/forgot-password",
+        name: "ForgotPassword",
+        component: () =>
+          import(/* webpackChunkName: "login" */ "@/views/ForgotPassword.vue"),
+        meta: {
+          requiresAuth: false,
+        },
+      },
+    ],
   },
+
   {
     path: "/",
     name: "DashboardLayout",
