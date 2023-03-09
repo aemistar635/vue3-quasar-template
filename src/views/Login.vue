@@ -6,14 +6,22 @@
       <Input
         v-model="username"
         label="Username"
-        :rules="[(val) => !!val || 'Field is required']"
+        :rules="[(val) => !!val || 'Username is required']"
       />
-      <Input
-        v-model="password"
-        label="Password"
-        :type="passwordType"
-        @showHidePass="showPass"
-      />
+      <Input v-model="password" label="Password" :type="passwordType">
+        <template #icon>
+          <Icon
+            size="20px"
+            :name="passwordType == 'password' ? 'visibility_off' : 'visibility'"
+            class="cursor-pointer q-my-auto"
+            @click="
+              passwordType == 'password'
+                ? (passwordType = 'text')
+                : (passwordType = 'password')
+            "
+          />
+        </template>
+      </Input>
       <div class="row justify-between items-center">
         <CheckBox label-text="Remember me" />
         <p
@@ -37,12 +45,12 @@ const passwordType = ref("password");
 function onSubmit() {
   console.log("thiesetrstsdfasdf", username.value, password.value);
 }
-function showPass() {
-  passwordType.value == "password"
-    ? (passwordType.value = "text")
-    : (passwordType.value = "password");
-  console.log("enterings", passwordType.value);
-}
+// function showPass() {
+//   passwordType.value == "password"
+//     ? (passwordType.value = "text")
+//     : (passwordType.value = "password");
+//   console.log("enterings", passwordType.value);
+// }
 </script>
 <style lang="scss" scoped>
 .login-content {

@@ -9,13 +9,7 @@
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   >
-    <template v-if="isPasswordType" v-slot:append>
-      <q-icon
-        :name="type == 'password' ? 'visibility_off' : 'visibility'"
-        class="cursor-pointer"
-        @click="emit('showHidePass')"
-      />
-    </template>
+    <slot name="icon"></slot>
   </q-input>
 </template>
 <script setup>
@@ -38,8 +32,6 @@ const props = defineProps({
     default: "text",
   },
 });
-const emit = defineEmits(["showHidePass"]);
-const isPasswordType = ref(props.type == "password" ? true : false);
 </script>
 <style>
 .label {
