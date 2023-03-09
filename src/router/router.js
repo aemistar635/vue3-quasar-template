@@ -12,6 +12,9 @@ export const routes = [
       import(
         /* webpackChunkName: "login" */ "@/components/layout/LoginLayout.vue"
       ),
+    meta: {
+      requiresAuth: false,
+    },
     children: [
       {
         path: "/login",

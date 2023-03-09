@@ -10,6 +10,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   window.scroll(0, 0);
   try {
+    if (to.path == "/") {
+      if (!localStorage.getItem("isLoggedIn"))
+        next({ name: "Login", replace: true }).catch(() => {});
+    }
+
     if (to.meta.requiresAuth && !localStorage.getItem("isLoggedIn")) {
       next({ name: "Login", replace: true }).catch(() => {});
     } else {
