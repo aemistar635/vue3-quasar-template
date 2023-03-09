@@ -5,15 +5,15 @@
     outlined
     v-bind="$attrs"
     :placeholder="placeholder ? placeholder : label"
-    :type="isPasswordType ? 'password' : 'text'"
+    :type="type"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   >
-    <template v-if="type == 'password'" v-slot:append>
+    <template v-if="isPasswordType" v-slot:append>
       <q-icon
-        :name="isPasswordType ? 'visibility_off' : 'visibility'"
+        :name="type == 'password' ? 'visibility_off' : 'visibility'"
         class="cursor-pointer"
-        @click="isPasswordType = !isPasswordType"
+        @click="emit('showHidePass')"
       />
     </template>
   </q-input>
@@ -38,6 +38,7 @@ const props = defineProps({
     default: "text",
   },
 });
+const emit = defineEmits(["showHidePass"]);
 const isPasswordType = ref(props.type == "password" ? true : false);
 </script>
 <style>

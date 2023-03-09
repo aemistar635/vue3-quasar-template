@@ -8,7 +8,12 @@
         label="Username"
         :rules="[(val) => !!val || 'Field is required']"
       />
-      <Input v-model="password" label="Password" type="password" />
+      <Input
+        v-model="password"
+        label="Password"
+        :type="passwordType"
+        @showHidePass="showPass"
+      />
       <div class="row justify-between items-center">
         <CheckBox label-text="Remember me" />
         <p
@@ -28,9 +33,15 @@ import CheckBox from "@/components/generic/CheckBox.vue";
 const username = ref("");
 const password = ref("");
 const remember = ref(false);
-
+const passwordType = ref("password");
 function onSubmit() {
   console.log("thiesetrstsdfasdf", username.value, password.value);
+}
+function showPass() {
+  passwordType.value == "password"
+    ? (passwordType.value = "text")
+    : (passwordType.value = "password");
+  console.log("enterings", passwordType.value);
 }
 </script>
 <style lang="scss" scoped>

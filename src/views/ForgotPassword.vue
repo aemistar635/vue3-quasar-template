@@ -1,16 +1,11 @@
 <template>
   <div class="login-content q-gutter-y-md">
     <h2 class="heading">Forgot password?</h2>
-    <Input label="email" />
-    <div class="row items-right  forgot-link">
+    <Input label="email" type="email" />
+    <div class="row justify-end forgot-link q-gutter-x-xs">
+      <p class="text-grey-7">Already remember password?</p>
       <p
-        class="q-pa-none q-ma-none"
-        @click="$router.push({ name: 'ForgotPassword' })"
-      >
-        Already remember password?
-      </p>
-      <p
-        class="q-pa-none q-ma-none text-primary cursor-pointer items-right"
+        class="text-primary cursor-pointer items-right"
         @click.prevent="$router.push({ name: 'Login' })"
       >
         Login
