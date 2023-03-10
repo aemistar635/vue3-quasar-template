@@ -8,6 +8,7 @@ export const routes = [
   {
     path: "/",
     name: "AuthLayout",
+    redirect: { name: "Login" },
     component: () =>
       import(
         /* webpackChunkName: "login" */ "@/components/layout/LoginLayout.vue"
