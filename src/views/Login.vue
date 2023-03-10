@@ -38,19 +38,15 @@
 <script setup>
 import { ref } from "vue";
 import CheckBox from "@/components/generic/CheckBox.vue";
+import router from "@/router";
 const username = ref("");
 const password = ref("");
 const remember = ref(false);
 const passwordType = ref("password");
 function onSubmit() {
-  console.log("thiesetrstsdfasdf", username.value, password.value);
+  localStorage.setItem("isLoggedIn",true)
+  router.push({name:'Home'})
 }
-// function showPass() {
-//   passwordType.value == "password"
-//     ? (passwordType.value = "text")
-//     : (passwordType.value = "password");
-//   console.log("enterings", passwordType.value);
-// }
 </script>
 <style lang="scss" scoped>
 .login-content {
