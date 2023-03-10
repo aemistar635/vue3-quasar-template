@@ -8,7 +8,12 @@
         label="Username"
         :rules="[(val) => !!val || 'Username is required']"
       />
-      <Input v-model="password" label="Password" :type="passwordType">
+      <Input
+        v-model="password"
+        label="Password"
+        :type="passwordType"
+        :rules="[(val) => !!val || 'Password is required']"
+      >
         <template #icon>
           <Icon
             size="20px"
@@ -44,8 +49,8 @@ const password = ref("");
 const remember = ref(false);
 const passwordType = ref("password");
 function onSubmit() {
-  localStorage.setItem("isLoggedIn",true)
-  router.push({name:'Home'})
+  localStorage.setItem("isLoggedIn", true);
+  router.push({ name: "Home" });
 }
 </script>
 <style lang="scss" scoped>
