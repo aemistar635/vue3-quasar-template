@@ -51,7 +51,10 @@ export const routes = [
         component: () =>
           import(/* webpackChunkName: "home" */ "@/components/HelloWorld.vue"),
         meta: {
+          label: "Home",
+          icon: "school",
           requiresAuth: true,
+          description: "github.com/quasarframework",
         },
       },
       {
@@ -60,7 +63,10 @@ export const routes = [
         component: () =>
           import(/* webpackChunkName: "about" */ "@/views/AboutView.vue"),
         meta: {
+          label: "About",
+          icon: "code",
           requiresAuth: true,
+          description: "quasar.dev",
         },
       },
     ],
