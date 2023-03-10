@@ -1,33 +1,30 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-    children:[
-      {
-        path:"",
-        name:"home",
-        component:()=> import ("@/components/HelloWorld.vue")
-      },
-      {
-        path: '/about',
-        name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-      }
-    ]
-  },
- 
-]
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import { routes } from "./router.js";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  window.scroll(0, 0);
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  try {
+    if (!isLoggedIn && to.name !== "Login") {
+      next({ name: "Login", replace: true }).catch(() => {});
+    } else {
+      if (isLoggedIn && to.name == "Login") {
+        next({ name: "Home" });
+      } else if (to.meta.requiresAuth && !isLoggedIn) {
+        next({ name: "Login", replace: true }).catch(() => {});
+      } else {
+        next();
+      }
+    }
+  } catch (e) {
+    next({ name: "Login", replace: true }).catch(() => {});
+  }
+});
+
+export default router;
