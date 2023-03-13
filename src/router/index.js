@@ -12,12 +12,12 @@ router.beforeEach((to, from, next) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   try {
     if (!isLoggedIn && to.name !== "Login") {
-      next({ name: "Login", replace: true }).catch(() => {});
+      next({ name: "Login", replace: true });
     } else {
       if (isLoggedIn && to.name == "Login") {
         next({ name: "Home" });
       } else if (to.meta.requiresAuth && !isLoggedIn) {
-        next({ name: "Login", replace: true }).catch(() => {});
+        next({ name: "Login", replace: true });
       } else {
         next();
       }
