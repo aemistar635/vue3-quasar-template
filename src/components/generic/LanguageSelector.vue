@@ -1,12 +1,12 @@
 <template>
-  <Button>
+  <Button v-bind="$attrs">
     <q-img
       class="q-pa-none q-ma-none"
       :src="selectedLanguage.src"
       style="min-height: 20px; min-width: 20px"
     />
   </Button>
-  <q-menu>
+  <q-menu v-bind="$attrs">
     <q-list style="min-width: 30px">
       <q-item
         v-for="lang in languages"
