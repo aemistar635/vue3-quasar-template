@@ -1,5 +1,7 @@
 <template>
-  <q-btn color="primary" v-bind="$attrs"> </q-btn>
+  <q-btn color="primary" v-bind="$attrs">
+    <slot></slot>
+  </q-btn>
 </template>
 <script setup></script>
 <style scoped></style>

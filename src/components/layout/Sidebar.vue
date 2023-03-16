@@ -41,45 +41,8 @@
           </q-item-section>
         </q-item>
       </div>
-      <div class="col-1 cursor-pointer">
-        <q-btn-dropdown color="white" class="q-px-auto">
-          <q-list>
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-img
-                  src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg"
-                  style="height: 20px; width: 20px"
-                />
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/800px-Flag_of_Germany.svg.png"
-                  style="height: 20px; width: 20px"
-                />
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png"
-                  style="height: 20px; width: 20px"
-                />
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Bandera_de_Espa%C3%B1a.svg"
-                  style="height: 20px; width: 20px"
-                />
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
+      <div class="col-1 cursor-pointer q-my-auto q-mx-auto">
+        <LanguageSelector />
       </div>
     </q-list>
   </q-drawer>
@@ -87,6 +50,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import LanguageSelector from "@/components/generic/LanguageSelector.vue";
 const router = useRouter();
 const showMiniSidebar = ref(true);
 
