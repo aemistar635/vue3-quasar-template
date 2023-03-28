@@ -1,5 +1,5 @@
 <template>
-  <q-checkbox v-model="inputValue" v-bind="$attrs">
+  <q-checkbox v-bind="$attrs">
     <label class="label-text">{{ labelText }}</label>
   </q-checkbox>
 </template>

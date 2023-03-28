@@ -1,21 +1,21 @@
 <template>
-  <q-header elevated class="glossy">
+  <q-header class="transparent">
     <q-toolbar>
-      <q-btn
-        flat
-        dense
-        round
-        @click="emits('sideBar')"
-        aria-label="Menu"
-        icon="menu"
-      />
-
-      <q-toolbar-title> Quasar App </q-toolbar-title>
+      <q-toolbar-title class="q-ma-lg text-black page_title">{{
+        route.name
+      }}</q-toolbar-title>
 
       <div>Quasar v{{ $q.version }}</div>
     </q-toolbar>
   </q-header>
 </template>
 <script setup>
-const emits = defineEmits(["sideBar"]);
+import { useRoute } from "vue-router";
+const route = useRoute();
 </script>
+<style lang="scss">
+.page_title {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+</style>

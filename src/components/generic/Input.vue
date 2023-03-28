@@ -1,13 +1,10 @@
 <template>
   <label v-if="label" class="label">Enter Your {{ label }}</label>
   <q-input
-    v-model="text"
     outlined
     v-bind="$attrs"
     :placeholder="placeholder ? placeholder : label"
     :type="type"
-    :value="modelValue"
-    @input="$emit('update:modelValue', $event.target.value)"
   >
     <slot name="icon"></slot>
   </q-input>
@@ -23,10 +20,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  modelValue: {
-    type: String,
-    default: "",
-  },
+  // modelValue: {
+  //   type: String,
+  //   default: "",
+  // },
   type: {
     type: String,
     default: "text",

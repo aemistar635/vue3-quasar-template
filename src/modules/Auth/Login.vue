@@ -28,7 +28,7 @@
         </template>
       </Input>
       <div class="row justify-between items-center">
-        <CheckBox label-text="Remember me" />
+        <CheckBox v-model="remember" label-text="Remember me" />
         <p
           class="q-pa-none q-ma-none forgot-link text-primary"
           @click="$router.push({ name: 'ForgotPassword' })"
@@ -49,6 +49,8 @@ const password = ref("");
 const remember = ref(false);
 const passwordType = ref("password");
 function onSubmit() {
+  // console.log('v-model="userName"', username.value);
+  // console.log('v-model="Password"', password.value);
   localStorage.setItem("isLoggedIn", true);
   router.push({ name: "Home" });
 }

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import { routes } from "./router.js";
 
 const router = createRouter({
@@ -11,7 +10,7 @@ router.beforeEach((to, from, next) => {
   window.scroll(0, 0);
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   try {
-    if (!isLoggedIn && to.name !== "Login") {
+    if (!isLoggedIn && to.name !== "Login" && to.name !== "ForgotPassword") {
       next({ name: "Login", replace: true });
     } else {
       if (isLoggedIn && to.name == "Login") {

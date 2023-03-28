@@ -11,7 +11,7 @@ export const routes = [
     redirect: { name: "Login" },
     component: () =>
       import(
-        /* webpackChunkName: "login" */ "@/components/layout/LoginLayout.vue"
+        /* webpackChunkName: "login" */ "@/components/layout/AuthLayout.vue"
       ),
     meta: {
       requiresAuth: false,
@@ -21,7 +21,7 @@ export const routes = [
         path: "/login",
         name: "Login",
         component: () =>
-          import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
+          import(/* webpackChunkName: "login" */ "@/modules/Auth/Login.vue"),
         meta: {
           requiresAuth: false,
         },
@@ -30,7 +30,9 @@ export const routes = [
         path: "/forgot-password",
         name: "ForgotPassword",
         component: () =>
-          import(/* webpackChunkName: "login" */ "@/views/ForgotPassword.vue"),
+          import(
+            /* webpackChunkName: "login" */ "@/modules/Auth/ForgotPassword.vue"
+          ),
         meta: {
           requiresAuth: false,
         },
@@ -42,7 +44,7 @@ export const routes = [
     path: "/",
     name: "DashboardLayout",
     component: import(
-      /* webpackChunkName: "dashboard" */ "@/views/HomeView.vue"
+      /* webpackChunkName: "dashboard" */ "@/components/layout/DashboardLayout.vue"
     ),
     children: [
       {
@@ -61,7 +63,9 @@ export const routes = [
         path: "/about",
         name: "About",
         component: () =>
-          import(/* webpackChunkName: "about" */ "@/views/AboutView.vue"),
+          import(
+            /* webpackChunkName: "about" */ "@/modules/Dashboard/AboutView.vue"
+          ),
         meta: {
           label: "About",
           icon: "code",
