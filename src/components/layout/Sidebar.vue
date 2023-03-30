@@ -42,7 +42,7 @@
         </q-item>
       </div>
       <div class="col-1 cursor-pointer q-my-auto q-mx-auto">
-        <LanguageSelector color="white"/>
+        <LanguageSelector color="white" />
       </div>
     </q-list>
   </q-drawer>
