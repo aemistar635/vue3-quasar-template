@@ -4,9 +4,22 @@ import { Notify } from "quasar";
 const axiosInstance = axios.create({
   baseURL: process.env.VUE_APP_ROOT_API,
   headers: {
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "multipart/form-data", //in zanbeel we use this otherwise best practice is Contetnt-Type : 'application/json'
   },
 });
+// interceptors
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
 
 const get = async (url, body) => {
   try {
